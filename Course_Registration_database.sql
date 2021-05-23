@@ -1,3 +1,4 @@
+-- root / 12345
 create database CourseRegistration;
 use CourseRegistration;
 
