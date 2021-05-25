@@ -5,7 +5,7 @@ use CourseRegistration;
 create table account(
 	username varchar(10) primary key,
     password varchar(10),
-    account_name varchar(10)
+    account_name varchar(50)
 );
 create table class(
 	class_id varchar(10) primary key,
@@ -31,7 +31,8 @@ create table semester(
     semester_name varchar(10),
     year int,
     first_day date,
-    last_day date
+    last_day date,
+    is_current boolean
 );
 create table course_registration_session(
 	semester_id varchar(10) primary key references semester(semester_id),
