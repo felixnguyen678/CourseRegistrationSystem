@@ -1,8 +1,7 @@
 package DAO;
 
 import POJO.Account;
-import POJO.Student;
-import org.hibernate.Hibernate;
+
 import org.hibernate.Session;
 import org.hibernate.query.Query;
 import utils.HibernateUtil;
