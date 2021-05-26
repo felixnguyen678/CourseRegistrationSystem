@@ -36,8 +36,8 @@ create table semester(
 );
 create table course_registration_session(
 	semester_id varchar(10) primary key references semester(semester_id),
-    fist_day date,
-    last_day date
+    fist_day datetime,
+    last_day datetime
 );
 
 create table course(
@@ -53,6 +53,7 @@ create table course(
 create table student_course(
 	student_id varchar(10) references student(student_id),
 	course_id varchar(10) references course(course_id),
+    registration_time datetime,
     primary key (student_id, course_id)
 
 );
