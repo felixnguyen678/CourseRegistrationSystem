@@ -1,0 +1,27 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+    <class name="POJO.Student" table="student" schema="courseregistration">
+        <id name="studentId">
+            <column name="student_id" sql-type="varchar(10)" length="10"/>
+        </id>
+        <property name="password">
+            <column name="password" sql-type="varchar(10)" length="10" not-null="true"/>
+        </property>
+        <property name="fullName">
+            <column name="full_name" sql-type="varchar(20)" length="20" not-null="true"/>
+        </property>
+        <property name="gender">
+            <column name="gender" sql-type="int" not-null="true"/>
+        </property>
+        <property name="birthday">
+            <column name="birthday" sql-type="date" not-null="true"/>
+        </property>
+        <many-to-one name="clazz" class="POJO.Clazz">
+            <column name="class_id" not-null="true"/>
+        </many-to-one>
+    </class>
+</hibernate-mapping>

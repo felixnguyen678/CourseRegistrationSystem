@@ -1,6 +1,10 @@
 import DAO.AccountDAO;
+import DAO.ClazzDAO;
+import DAO.StudentDAO;
 import GUI.LoginGUI;
 import POJO.Account;
+import POJO.Clazz;
+import POJO.Student;
 
 
 import javax.swing.*;
@@ -14,14 +18,22 @@ public class App {
 
         //System.out.println("hello");
         //hibernate test
-        Account account = AccountDAO.getAccountByUsername("abc");
-        System.out.println(account.toString());
 
+        List<Clazz> clazzes = ClazzDAO.getAllClazz();
+        for(Clazz item: clazzes)
+            System.out.println(item.toString());
 
+        List<Student> students = StudentDAO.getAllStudents();
+        for(Student item: students)
+            System.out.printf(item.toString());
+
+        List<Account> accounts = AccountDAO.getAllAccounts();
+        for(Account item: accounts)
+            System.out.println(item.toString());
         // swing form review
-        JFrame.setDefaultLookAndFeelDecorated(true);
+        //JFrame.setDefaultLookAndFeelDecorated(true);
 
-        LoginGUI loginGUI = LoginGUI.getInstance();
+        //LoginGUI loginGUI = LoginGUI.getInstance();
         //AccountHomeGUI accountHomeGUI = new AccountHomeGUI();
         //GUI.student.StudentHomeGUI studentHomeGUI = new GUI.student.StudentHomeGUI();
 

@@ -6,12 +6,18 @@
   <session-factory>
     <property name="connection.url">jdbc:mysql://localhost:3306/courseregistration</property>
     <property name="connection.driver_class">com.mysql.cj.jdbc.Driver</property>
-    <!-- <property name="connection.username"/> -->
-    <property name="connection.username">root</property>
+      <!-- <property name="connection.username"/> -->
     <!-- <property name="connection.password"/> -->
+    <property name="connection.username">root</property>
     <property name="connection.password">12345</property>
-      <mapping resource="Account.hbm.xml"/>
-      <mapping class="POJO.Account"/>
+
+    <mapping resource="Account.hbm.xml"/>
+    <mapping class="POJO.Account"/>
+    <mapping resource="Clazz.hbm.xml"/>
+    <mapping class="POJO.Clazz"/>
+    <mapping class="POJO.Student"/>
+    <mapping resource="Student.hbm.xml"/>
+
 
     <!-- DB schema will be updated if needed -->
     <!-- <property name="hibernate.hbm2ddl.auto">update</property> -->
