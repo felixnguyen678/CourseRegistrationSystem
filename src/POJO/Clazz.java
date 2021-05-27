@@ -53,11 +53,5 @@ public class Clazz {
         this.students = students;
     }
 
-    @Override
-    public String toString() {
-        return "Clazz{" +
-                "classId='" + classId + '\'' +
-                ", className='" + className + '\'' +
-                '}';
-    }
+
 }

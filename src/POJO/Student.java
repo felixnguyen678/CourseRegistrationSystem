@@ -86,15 +86,5 @@ public class Student {
         this.clazz = clazz;
     }
 
-    @Override
-    public String toString() {
-        return "Student{" +
-                "studentId='" + studentId + '\'' +
-                ", password='" + password + '\'' +
-                ", fullName='" + fullName + '\'' +
-                ", gender=" + gender +
-                ", birthday=" + birthday +
-                ", clazz=" +
-                '}';
-    }
+
 }
