@@ -37,7 +37,9 @@ public class AccountDAO {
 
             //get all students
             List<Account> accounts = query.list();
-            account = accounts.get(0);
+            if(accounts.size() != 0){
+                account = accounts.get(0);
+            }
         }
         catch (Throwable ex){
             System.err.println(ex);

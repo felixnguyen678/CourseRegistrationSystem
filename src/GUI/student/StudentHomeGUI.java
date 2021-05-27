@@ -1,6 +1,10 @@
 package GUI.student;
 
+import GUI.LoginGUI;
+
 import javax.swing.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class StudentHomeGUI extends JFrame{
     private JButton courseRegistrationButton;
@@ -9,11 +13,19 @@ public class StudentHomeGUI extends JFrame{
     private JButton logOutButton;
     private JPanel panel;
 
+
     public StudentHomeGUI(){
         add(panel);
         setSize(300, 300);
         setTitle("Home");
         setLocationRelativeTo(null);
         setVisible(true);
+        logOutButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                dispose();
+                LoginGUI loginGUI = new LoginGUI();
+            }
+        });
     }
 }
