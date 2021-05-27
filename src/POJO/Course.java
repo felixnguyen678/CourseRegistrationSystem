@@ -2,6 +2,7 @@ package POJO;
 
 import javax.persistence.*;
 import java.util.Objects;
+import java.util.Set;
 
 @Entity
 public class Course {
@@ -12,6 +13,7 @@ public class Course {
     private Integer maximumNumberOfSlot;
     private Subject subject;
     private Semester semester;
+    private Set<Registration> registrations;
 
     @Id
     @Column(name = "course_id", nullable = false, length = 10)
@@ -94,5 +96,14 @@ public class Course {
 
     public void setSemester(Semester semester) {
         this.semester = semester;
+    }
+
+    @OneToMany(mappedBy = "course")
+    public Set<Registration> getRegistrations() {
+        return registrations;
+    }
+
+    public void setRegistrations(Set<Registration> registrations) {
+        this.registrations = registrations;
     }
 }

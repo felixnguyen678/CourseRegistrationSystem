@@ -25,6 +25,8 @@
     <mapping class="POJO.Semester"/>
     <mapping class="POJO.Subject"/>
     <mapping resource="resources/Subject.hbm.xml"/>
+    <mapping class="POJO.Registration"/>
+    <mapping resource="resources/Registration.hbm.xml"/>
 
 
     <!-- DB schema will be updated if needed -->

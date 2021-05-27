@@ -1,24 +1,22 @@
 package DAO;
 
-import POJO.*;
-import org.hibernate.Hibernate;
+import POJO.Registration;
 import org.hibernate.Session;
 import org.hibernate.query.Query;
 import utils.HibernateUtil;
 
 import java.util.List;
 
-public class ClazzDAO {
-    public static List<Clazz> getAllClazzes() {
+public class RegistrationDAO {
+    public static List<Registration> getAllRegistrations(){
         Session session = HibernateUtil.getSession();
 
-        List<Clazz> clazzes = null;
+        List<Registration> registrations = null;
         try{
-            final String hql = "select cl from Clazz cl";
+            final String hql = "select re from Registration re";
             Query query = session.createQuery(hql);
 
-            //get all students
-            clazzes = query.list();
+            registrations = query.list();
 
         }
         catch (Throwable ex){
@@ -26,9 +24,6 @@ public class ClazzDAO {
         } finally {
             session.close();
         }
-        return clazzes;
+        return registrations;
     }
-
-
-
 }

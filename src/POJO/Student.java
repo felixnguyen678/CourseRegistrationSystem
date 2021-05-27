@@ -3,6 +3,7 @@ package POJO;
 import javax.persistence.*;
 import java.sql.Date;
 import java.util.Objects;
+import java.util.Set;
 
 @Entity
 public class Student {
@@ -12,6 +13,7 @@ public class Student {
     private Integer gender;
     private Date birthday;
     private Clazz clazz;
+    private Set<Registration> registrations;
 
     @Id
     @Column(name = "student_id", nullable = false, length = 10)
@@ -86,5 +88,12 @@ public class Student {
         this.clazz = clazz;
     }
 
+    @OneToMany(mappedBy = "student")
+    public Set<Registration> getRegistrations() {
+        return registrations;
+    }
 
+    public void setRegistrations(Set<Registration> registrations) {
+        this.registrations = registrations;
+    }
 }

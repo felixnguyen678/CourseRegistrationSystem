@@ -23,5 +23,12 @@
         <many-to-one name="clazz" class="POJO.Clazz">
             <column name="class_id" not-null="true"/>
         </many-to-one>
+
+        <set name="registrations" inverse="true">
+            <key>
+                <column name="student_id"/>
+            </key>
+            <one-to-many not-found="ignore" class="POJO.Registration"/>
+        </set>
     </class>
 </hibernate-mapping>

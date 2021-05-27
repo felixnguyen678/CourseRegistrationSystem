@@ -1,11 +1,11 @@
 package app;
 
 import DAO.AccountDAO;
-import DAO.ClazzDAO;
+import DAO.RegistrationDAO;
 import DAO.StudentDAO;
 import GUI.LoginGUI;
 import POJO.Account;
-import POJO.Clazz;
+import POJO.Registration;
 import POJO.Student;
 import org.hibernate.Session;
 import utils.HibernateUtil;
@@ -23,20 +23,11 @@ public class App {
 
         //System.out.println("hello");
         //hibernate test
-/*
-        List<Clazz> clazzes = ClazzDAO.getAllClazz();
-        for(Clazz item: clazzes)
+
+        List<Registration> res = RegistrationDAO.getAllRegistrations();
+        for(Registration item: res)
             System.out.println(item.toString());
 
-        List<Student> students = StudentDAO.getAllStudents();
-        for(Student item: students)
-            System.out.printf(item.toString());
-
-        List<Account> accounts = AccountDAO.getAllAccounts();
-        for(Account item: accounts)
-            System.out.println(item.toString());
-
- */
         // swing form review
         session = HibernateUtil.getSession();
         JFrame.setDefaultLookAndFeelDecorated(true);
