@@ -1,0 +1,19 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+    <class name="POJO.CourseRegistrationSession" table="course_registration_session" schema="courseregistration">
+        <id name="semesterId">
+            <column name="semester_id" sql-type="varchar(10)" length="10"/>
+        </id>
+        <property name="fistDay">
+            <column name="fist_day" sql-type="datetime" not-null="true"/>
+        </property>
+        <property name="lastDay">
+            <column name="last_day" sql-type="datetime" not-null="true"/>
+        </property>
+        <one-to-one name="semester" class="POJO.Semester"/>
+    </class>
+</hibernate-mapping>
