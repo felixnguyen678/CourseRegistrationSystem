@@ -20,6 +20,14 @@
         <property name="birthday">
             <column name="birthday" sql-type="date" not-null="true"/>
         </property>
+        <property name="email">
+            <column name="email" sql-type="varchar(20)" length="20"/>
+        </property>
+        <property name="phoneNumber">
+            <column name="phone_number" sql-type="varchar(20)" length="20"/>
+        </property>
+
+
         <many-to-one name="clazz" class="POJO.Clazz">
             <column name="class_id" not-null="true"/>
         </many-to-one>

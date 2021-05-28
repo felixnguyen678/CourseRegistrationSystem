@@ -5,7 +5,9 @@ use CourseRegistration;
 create table account(
 	username varchar(10) primary key,
     password varchar(10),
-    account_name varchar(50)
+    account_name varchar(50),
+    email varchar(20),
+    phone_number varchar(20)
 );
 create table class(
 	class_id varchar(10) primary key,
@@ -17,6 +19,8 @@ create table student(
     full_name varchar(20),
     gender int,
     birthday date,
+    email varchar(20),
+    phone_number varchar(20),
     class_id varchar(10) references class(class_id)
 );
 
@@ -50,10 +54,9 @@ create table course(
     maximum_number_of_slot integer
 );
 
-create table student_course(
-	student_id varchar(10) references student(student_id),
-	course_id varchar(10) references course(course_id),
-    registration_time datetime,
-    primary key (student_id, course_id)
-
+create table registration(
+    registration_id varchar(20) primary key ,
+    student_id varchar(10) references student(student_id),
+    course_id varchar(10) references course(course_id),
+    registration_time datetime
 );

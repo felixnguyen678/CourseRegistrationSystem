@@ -12,6 +12,8 @@ public class Student {
     private String fullName;
     private Integer gender;
     private Date birthday;
+    private String email;
+    private String phoneNumber;
     private Clazz clazz;
     private Set<Registration> registrations;
 
@@ -64,6 +66,19 @@ public class Student {
     public void setBirthday(Date birthday) {
         this.birthday = birthday;
     }
+
+    @Basic
+    @Column(name = "email", nullable = true, length = 20)
+    public String getEmail() {return email;}
+
+    public void setEmail(String email) { this.email = email;}
+
+    @Basic
+    @Column(name = "phone_number", nullable = true, length = 20)
+    public String getPhoneNumber() {return phoneNumber;}
+
+    public void setPhoneNumber(String phoneNumber) { this.phoneNumber = phoneNumber;}
+
 
     @Override
     public boolean equals(Object o) {

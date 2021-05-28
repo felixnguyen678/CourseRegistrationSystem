@@ -15,15 +15,9 @@ import javax.swing.*;
 import java.util.List;
 
 public class App {
-    public static String userId;
-    public static String typeOfUser;
-    public static Session session;
+    private static Session session;
 
     public static void main(final String[] args) throws Exception {
-
-        //System.out.println("hello");
-        //hibernate test
-
         List<Registration> res = RegistrationDAO.getAllRegistrations();
         for(Registration item: res)
             System.out.println(item.toString());

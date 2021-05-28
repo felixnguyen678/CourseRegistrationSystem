@@ -7,16 +7,11 @@ import GUI.student.StudentHomeGUI;
 import POJO.Account;
 
 import POJO.Student;
-import app.App;
-import com.mysql.cj.log.Log;
-import utils.HibernateUtil;
+import utils.*;
 
 import javax.swing.*;
-import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
 
 public class LoginGUI extends JFrame{
     private JPasswordField passwordField;
@@ -46,10 +41,12 @@ public class LoginGUI extends JFrame{
                             String.valueOf(
                                     passwordField.getPassword()
                             )) == 0){
-                        App.userId = textField.getText();
-                        App.typeOfUser = "account";
+                        RunTimeUtil.setTypeOfUser("account");
+                        RunTimeUtil.setPassword(String.valueOf(passwordField.getPassword()));
+                        RunTimeUtil.setUserId(textField.getText());
                         dispose();
                         AccountHomeGUI accountHomeGUI = new AccountHomeGUI();
+
                     }
                     else
                         JOptionPane.showMessageDialog(
@@ -64,8 +61,9 @@ public class LoginGUI extends JFrame{
                         if(student.getPassword().compareTo(
                                 String.valueOf(passwordField.getPassword())
                         ) == 0){
-                            App.userId = textField.getText();
-                            App.typeOfUser = "student";
+                            RunTimeUtil.setTypeOfUser("student");
+                            RunTimeUtil.setPassword(String.valueOf(passwordField.getPassword()));
+                            RunTimeUtil.setUserId(textField.getText());
                             dispose();
                             StudentHomeGUI studentHomeGUI = new StudentHomeGUI();
                         }

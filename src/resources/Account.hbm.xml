@@ -14,5 +14,11 @@
         <property name="accountName">
             <column name="account_name" sql-type="varchar(10)" length="10" not-null="true"/>
         </property>
+        <property name="email">
+            <column name="email" sql-type="varchar(20)" length="20"/>
+        </property>
+        <property name="phoneNumber">
+            <column name="phone_number" sql-type="varchar(20)" length="20"/>
+        </property>
     </class>
 </hibernate-mapping>

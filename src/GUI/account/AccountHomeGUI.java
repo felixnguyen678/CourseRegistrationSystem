@@ -1,7 +1,10 @@
 package GUI.account;
 
+import DAO.AccountDAO;
 import GUI.LoginGUI;
 import GUI.student.StudentHomeGUI;
+import POJO.Account;
+import utils.RunTimeUtil;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -32,6 +35,15 @@ public class AccountHomeGUI extends JFrame{
             public void actionPerformed(ActionEvent e) {
                 dispose();
                 LoginGUI loginGUI = new LoginGUI();
+            }
+        });
+        profileButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Account account = AccountDAO.getAccountByUsername(RunTimeUtil.getUserId());
+                AccountProfileManagerGUI accountProfileManagerGUI = new AccountProfileManagerGUI(
+                        account
+                );
             }
         });
     }

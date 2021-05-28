@@ -1,5 +1,7 @@
 package POJO;
 
+import DAO.AccountDAO;
+
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -11,6 +13,24 @@ public class Account {
     private String username;
     private String password;
     private String accountName;
+    private String email;
+    private String phoneNumber;
+
+    public Account(){}
+    public Account(String username, String password, String accountName, String email, String phoneNumber) {
+        this.username = username;
+        this.password = password;
+        this.accountName = accountName;
+        this.email = email;
+        this.phoneNumber = phoneNumber;
+    }
+    public Account(Account account) {
+        this.username = account.username;
+        this.password = account.password;
+        this.accountName = account.accountName;
+        this.email = account.email;
+        this.phoneNumber = account.phoneNumber;
+    }
 
     @Id
     @Column(name = "username", nullable = false, length = 10)
@@ -41,6 +61,18 @@ public class Account {
     public void setAccountName(String accountName) {
         this.accountName = accountName;
     }
+
+    @Basic
+    @Column(name = "email", nullable = true, length = 20)
+    public String getEmail() {return email;}
+
+    public void setEmail(String email) { this.email = email;}
+
+    @Basic
+    @Column(name = "phone_number", nullable = true, length = 20)
+    public String getPhoneNumber() {return phoneNumber;}
+
+    public void setPhoneNumber(String phoneNumber) { this.phoneNumber = phoneNumber;}
 
     @Override
     public boolean equals(Object o) {
