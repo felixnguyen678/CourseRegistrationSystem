@@ -11,6 +11,19 @@ public class Subject {
     private Integer numberOfCredit;
     private Set<Course> courses;
 
+    public Subject(){}
+    public Subject(Subject _subject){
+        subjectId = _subject.getSubjectId();
+        subjectName = _subject.getSubjectName();
+        numberOfCredit = _subject.getNumberOfCredit();
+        courses = _subject.getCourses();
+    }
+    public Subject(String _subjectId, String _subjectName, int _numberOfCredit){
+        subjectId = _subjectId;
+        subjectName = _subjectName;
+        numberOfCredit = _numberOfCredit;
+    }
+
     @Id
     @Column(name = "subject_id", nullable = false, length = 10)
     public String getSubjectId() {

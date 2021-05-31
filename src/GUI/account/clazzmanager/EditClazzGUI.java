@@ -18,7 +18,7 @@ public class EditClazzGUI extends  JFrame{
         classNameTextField.setText(clazz.getClassName());
         add(panel);
         setSize(400, 200);
-        setTitle("Edit Account");
+        setTitle("Edit Class");
         setLocationRelativeTo(null);
         setVisible(true);
         submitButton.addActionListener(new ActionListener() {

@@ -1,7 +1,7 @@
-package GUI.account.accountmanager;
+package GUI.account.subjectmanager;
 
-import DAO.AccountDAO;
-import POJO.Account;
+import DAO.SubjectDAO;
+import POJO.Subject;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
@@ -9,18 +9,19 @@ import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 import java.util.List;
 
-public class AccountManagerGUI extends JFrame {
+public class SubjectManagerGUI extends JFrame {
 
-    public class AccountManagerPane extends  JPanel{
+    public class SubjectManagerPane extends  JPanel{
         private JButton refreshButton;
-        private JTextField searchBox;
+        private JComboBox searchBox;
         private JButton searchButton;
         private JButton addButton;
-        private List<Account> accounts;
-        AccountManagerPane(){
-            setTitle("Accounts");
+        private List<Subject> subjects;
+        SubjectManagerPane(){
+            setTitle("Subjects");
             setBorder(new EmptyBorder(60, 60, 60 ,60 ));
             setLayout(new GridBagLayout());
             GridBagConstraints gbc = new GridBagConstraints();
@@ -35,25 +36,33 @@ public class AccountManagerGUI extends JFrame {
                 @Override
                 public void actionPerformed(ActionEvent e) {
                     dispose();
-                    AccountManagerGUI newaccmnGUI = new AccountManagerGUI();
+                    SubjectManagerGUI newsjmnGUI = new SubjectManagerGUI();
                 }
             });
-            add(new JLabel("              Tìm tài khoản giáo vụ bằng username:"));
-            searchBox = new JTextField("", 25);
+            add(new JLabel("              Tìm kiếm môn học bằng mã môn học:"));
+
+
+
+            subjects = SubjectDAO.getAllSubjects();
+            List<String> strings = new ArrayList<String>();
+            for( Subject item: subjects){
+                strings.add(item.getSubjectId());
+            }
+            searchBox = new JComboBox(strings.toArray());
             add(searchBox);
             searchButton = new JButton("Search");
             //listerner
             searchButton.addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
-                    Account acc = AccountDAO.getAccountByUsername(searchBox.getText());
-                    if(acc != null){
-                        AccountSearchGUI AccountSearchGUI = new AccountSearchGUI(acc);
+                    Subject sj = SubjectDAO.getSubjectById(searchBox.getItemAt(searchBox.getSelectedIndex()).toString());
+                    if(sj != null){
+                        SearchSubjectGUI searchSubjectGUI = new SearchSubjectGUI(sj);
                     }
                     else
                         JOptionPane.showMessageDialog(
                                 null,
-                                "Username không tồn tại",
+                                "Mã môn học không tồn tại",
                                 "Search failed",
                                 JOptionPane.WARNING_MESSAGE);
 
@@ -63,26 +72,20 @@ public class AccountManagerGUI extends JFrame {
             add(searchButton,gbc);
 
 
-            Object [] columnNames = new Object[]{ "Id", "Quantity" };
-
-
             DefaultTableModel accountModel = new DefaultTableModel();
             JTable accountTable = new JTable(accountModel);
             accountTable.setPreferredScrollableViewportSize(new Dimension(500,80));
 
-            accountModel.addColumn("username");
-            accountModel.addColumn("Tên tài khoản");
-            accountModel.addColumn("e-mail");
-            accountModel.addColumn("Số điện thoại");
+            accountModel.addColumn("Mã môn học");
+            accountModel.addColumn("Tên môn học");
+            accountModel.addColumn("Số tín chỉ");
 
-            accounts = AccountDAO.getAllAccounts();
-            if(accounts != null){
-                for(Account i: accounts){
+            if(subjects != null){
+                for(Subject i: subjects){
                     accountModel.addRow(new Object[]{
-                            i.getUsername(),
-                            i.getAccountName(),
-                            i.getEmail(),
-                            i.getPhoneNumber()
+                            i.getSubjectId(),
+                            i.getSubjectName(),
+                            i.getNumberOfCredit()
                     });
 
                 }
@@ -90,24 +93,24 @@ public class AccountManagerGUI extends JFrame {
             JScrollPane scrollPane = new JScrollPane(accountTable);
             scrollPane.setPreferredSize(new Dimension(400, 200));
             add(scrollPane, gbc);
-            addButton = new JButton("Thêm tài khoản giáo vụ");
+            addButton = new JButton("Thêm môn học");
             add(addButton, gbc);
 
             addButton.addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
-                    AddAccountGUI addAccountGUI = new AddAccountGUI();
+                    AddSubjectGUI addSubjectGUI = new AddSubjectGUI();
                 }
             });
         }
     }
-    public AccountManagerGUI(){
+    public SubjectManagerGUI(){
         SwingUtilities.invokeLater(new Runnable() {
             @Override
             public void run() {
                 setTitle("Account Manager");
                 setSize(600, 500);
-                add(new AccountManagerPane());
+                add(new SubjectManagerPane());
                 pack();
                 setLocationRelativeTo(null);
                 setVisible(true);

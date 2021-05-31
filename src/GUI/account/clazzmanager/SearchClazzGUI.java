@@ -28,9 +28,18 @@ public class SearchClazzGUI extends JFrame{
         removeButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                ClazzDAO.removeClazz(clazz);
-                dispose();
-                JOptionPane.showMessageDialog(null, "Successfully removed.");
+                if(ClazzDAO.removeClazz(clazz))
+                {
+                    dispose();
+                    JOptionPane.showMessageDialog(null, "Successfully removed.");
+                }
+                else
+                    JOptionPane.showMessageDialog(
+                        null,
+                        "Cannot remove",
+                        "Search failed",
+                        JOptionPane.WARNING_MESSAGE);
+
             }
         });
         editButton.addActionListener(new ActionListener() {
