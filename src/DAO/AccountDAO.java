@@ -70,4 +70,22 @@ public class AccountDAO {
         return true;
 
     }
+    public static boolean addAccount(Account account){
+        Session session = HibernateUtil.getSession();
+        if(AccountDAO.getAccountByUsername(account.getUsername()) != null)
+            return false;
+        Transaction transaction = null;
+        try{
+            transaction = session.beginTransaction();
+            session.save(account);
+            transaction.commit();
+        } catch (HibernateException ex){
+            transaction.rollback();
+            System.err.println(ex);
+        }
+        finally{
+            session.close();
+        }
+        return true;
+    }
 }

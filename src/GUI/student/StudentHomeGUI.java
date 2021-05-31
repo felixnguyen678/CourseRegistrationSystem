@@ -1,6 +1,7 @@
 package GUI.student;
 
 import GUI.LoginGUI;
+import POJO.Student;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -14,7 +15,7 @@ public class StudentHomeGUI extends JFrame{
     private JPanel panel;
 
 
-    public StudentHomeGUI(){
+    public StudentHomeGUI(Student student){
         add(panel);
         setSize(300, 300);
         setTitle("Home");

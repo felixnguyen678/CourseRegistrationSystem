@@ -2,7 +2,8 @@ package GUI.account;
 
 import DAO.AccountDAO;
 import GUI.LoginGUI;
-import GUI.student.StudentHomeGUI;
+import GUI.account.accountmanager.AccountManagerGUI;
+import GUI.account.profilemanager.ProfileManagerGUI;
 import POJO.Account;
 import utils.RunTimeUtil;
 
@@ -10,7 +11,7 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class AccountHomeGUI extends JFrame{
+public class HomeGUI extends JFrame{
     private JPanel panel;
     private JButton accountButton;
     private JButton subjectButton;
@@ -20,11 +21,11 @@ public class AccountHomeGUI extends JFrame{
     private JButton courseRegistrationSessionButton;
     private JButton courseButton;
     private JButton courseRegistrationResultButton;
-    private JButton profileButton;
+    private JButton yourProfileButton;
     private JButton logOutButton;
 
 
-    public AccountHomeGUI(){
+    public HomeGUI(){
         add(panel);
         setSize(500, 300);
         setTitle("Home");
@@ -37,13 +38,19 @@ public class AccountHomeGUI extends JFrame{
                 LoginGUI loginGUI = new LoginGUI();
             }
         });
-        profileButton.addActionListener(new ActionListener() {
+        yourProfileButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 Account account = AccountDAO.getAccountByUsername(RunTimeUtil.getUserId());
-                AccountProfileManagerGUI accountProfileManagerGUI = new AccountProfileManagerGUI(
+                ProfileManagerGUI profileManagerGUI = new ProfileManagerGUI(
                         account
                 );
+            }
+        });
+        accountButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                AccountManagerGUI accountManagerGUI = new AccountManagerGUI();
             }
         });
     }

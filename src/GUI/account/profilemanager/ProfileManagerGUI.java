@@ -1,17 +1,13 @@
-package GUI.account;
+package GUI.account.profilemanager;
 
-import DAO.AccountDAO;
 import GUI.ChangePasswordGUI;
 import POJO.Account;
-import antlr.StringUtils;
-import utils.RunTimeUtil;
-import utils.StringUtil;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class AccountProfileManagerGUI extends JFrame{
+public class ProfileManagerGUI extends JFrame{
     private JPanel panel;
     private JLabel username;
     private JLabel accountName;
@@ -20,7 +16,7 @@ public class AccountProfileManagerGUI extends JFrame{
     private JLabel email;
     private JLabel phoneNumber;
 
-    public AccountProfileManagerGUI(Account account) {
+    public ProfileManagerGUI(Account account) {
 
         username.setText(account.getUsername());
         accountName.setText(account.getAccountName());
@@ -37,7 +33,7 @@ public class AccountProfileManagerGUI extends JFrame{
             @Override
             public void actionPerformed(ActionEvent e) {
                 dispose();
-                AccountProfileEditGUI accountProfileEditGUI = new AccountProfileEditGUI(account);
+                EditProfileGUI editProfileGUI = new EditProfileGUI(account);
             }
         });
         changePasswordButton.addActionListener(new ActionListener() {
@@ -47,5 +43,6 @@ public class AccountProfileManagerGUI extends JFrame{
                 ChangePasswordGUI changePasswordGUI = new ChangePasswordGUI();
             }
         });
+
     }
 }

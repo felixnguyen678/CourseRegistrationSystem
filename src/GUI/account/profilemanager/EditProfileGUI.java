@@ -1,4 +1,4 @@
-package GUI.account;
+package GUI.account.profilemanager;
 
 import DAO.AccountDAO;
 import POJO.Account;
@@ -9,14 +9,14 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class AccountProfileEditGUI  extends JFrame{
+public class EditProfileGUI extends JFrame{
     private JPanel panel;
     private JTextField accountName;
     private JButton submitButton;
     private JTextField email;
     private JTextField phoneNumber;
 
-    public AccountProfileEditGUI(Account account){
+    public EditProfileGUI(Account account){
         accountName.setText(account.getAccountName());
         email.setText(account.getEmail());
         phoneNumber.setText(account.getPhoneNumber());
