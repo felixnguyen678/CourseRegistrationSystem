@@ -40,14 +40,6 @@
           <text value=""/>
         </properties>
       </component>
-      <component id="49b6" class="javax.swing.JButton" binding="editAccountButton">
-        <constraints>
-          <grid row="5" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
-        </constraints>
-        <properties>
-          <text value="Edit Account"/>
-        </properties>
-      </component>
       <hspacer id="5b463">
         <constraints>
           <grid row="1" column="3" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
@@ -98,6 +90,22 @@
         </constraints>
         <properties>
           <text value=""/>
+        </properties>
+      </component>
+      <component id="49b6" class="javax.swing.JButton" binding="editAccountButton">
+        <constraints>
+          <grid row="5" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <text value="Edit Account"/>
+        </properties>
+      </component>
+      <component id="46ba" class="javax.swing.JButton" binding="removeAccountButton" default-binding="true">
+        <constraints>
+          <grid row="5" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <text value="Remove Account"/>
         </properties>
       </component>
     </children>

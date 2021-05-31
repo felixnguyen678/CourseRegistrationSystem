@@ -11,6 +11,17 @@ public class Clazz {
     private String className;
     private Set<Student> students;
 
+    public Clazz(){}
+    public Clazz(String _classId, String _className){
+        this.classId = _classId;
+        this.className = _className;
+    }
+    public Clazz(Clazz clazz){
+        this.classId = clazz.getClassId();
+        this.className = clazz.getClassName();
+        this.students = clazz.getStudents();
+    }
+
     @Id
     @Column(name = "class_id", nullable = false, length = 10)
     public String getClassId() {

@@ -1,5 +1,6 @@
 package GUI.account.accountmanager;
 
+import DAO.AccountDAO;
 import POJO.Account;
 
 import javax.swing.*;
@@ -13,6 +14,7 @@ public class AccountSearchGUI extends JFrame{
     private JButton editAccountButton;
     private JLabel email;
     private JLabel phoneNumber;
+    private JButton removeAccountButton;
 
     public AccountSearchGUI(Account account) {
 
@@ -20,12 +22,12 @@ public class AccountSearchGUI extends JFrame{
         accountName.setText(account.getAccountName());
         email.setText(account.getEmail());
         phoneNumber.setText(account.getPhoneNumber());
+
         add(panel);
         setSize(400, 200);
-        setTitle("Search Account");
+        setTitle("Add Account");
         setLocationRelativeTo(null);
         setVisible(true);
-
 
 
         editAccountButton.addActionListener(new ActionListener() {
@@ -33,6 +35,14 @@ public class AccountSearchGUI extends JFrame{
             public void actionPerformed(ActionEvent e) {
                 dispose();
                 EditAccountGUI editAccountGUI = new EditAccountGUI(account);
+            }
+        });
+        removeAccountButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                AccountDAO.removeAccount(account);
+                dispose();
+                JOptionPane.showMessageDialog(null, "Successfully removed.");
             }
         });
     }
