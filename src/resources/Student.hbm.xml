@@ -12,7 +12,7 @@
             <column name="password" sql-type="varchar(10)" length="10" not-null="true"/>
         </property>
         <property name="fullName">
-            <column name="full_name" sql-type="varchar(20)" length="20" not-null="true"/>
+            <column name="full_name" sql-type="varchar(50)" length="50" not-null="true"/>
         </property>
         <property name="gender">
             <column name="gender" sql-type="int" not-null="true"/>
@@ -21,10 +21,10 @@
             <column name="birthday" sql-type="date" not-null="true"/>
         </property>
         <property name="email">
-            <column name="email" sql-type="varchar(20)" length="20"/>
+            <column name="email" sql-type="varchar(50)" length="50"/>
         </property>
         <property name="phoneNumber">
-            <column name="phone_number" sql-type="varchar(20)" length="20"/>
+            <column name="phone_number" sql-type="varchar(50)" length="50"/>
         </property>
 
 

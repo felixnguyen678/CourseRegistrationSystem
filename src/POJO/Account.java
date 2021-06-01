@@ -53,7 +53,7 @@ public class Account {
     }
 
     @Basic
-    @Column(name = "account_name", nullable = true, length = 10)
+    @Column(name = "account_name", nullable = true, length = 50)
     public String getAccountName() {
         return accountName;
     }
@@ -63,13 +63,13 @@ public class Account {
     }
 
     @Basic
-    @Column(name = "email", nullable = true, length = 20)
+    @Column(name = "email", nullable = true, length = 50)
     public String getEmail() {return email;}
 
     public void setEmail(String email) { this.email = email;}
 
     @Basic
-    @Column(name = "phone_number", nullable = true, length = 20)
+    @Column(name = "phone_number", nullable = true, length = 50)
     public String getPhoneNumber() {return phoneNumber;}
 
     public void setPhoneNumber(String phoneNumber) { this.phoneNumber = phoneNumber;}
