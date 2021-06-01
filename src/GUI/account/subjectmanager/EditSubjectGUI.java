@@ -12,7 +12,7 @@ import java.awt.event.ActionListener;
 public class EditSubjectGUI extends  JFrame{
 
 
-    public class EditSubjectPane extends  JPanel{
+    private class EditSubjectPane extends  JPanel{
         private JSpinner numberOfCreditSpinner;
         private JTextField subjectNameTextField;
         private JButton submitButton;

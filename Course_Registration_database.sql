@@ -33,7 +33,7 @@ create table subject(
 
 create table semester(
 	semester_id varchar(10) primary key,
-    semester_name varchar(10),
+    semester_name varchar(50),
     year int,
     first_day date,
     last_day date,
@@ -89,3 +89,8 @@ insert into subject values('LTNNSL', 'Lập trình ngôn ngữ Solidity', 1);
 insert into subject values('CTDLGT', 'Cơ sở dữ liệu & Giải thuật', 5);
 
 insert into student values('1710000', '12345', 'Sample Student', 1, '1999-12-5', '1710000@hcmus.edu.vn', '0862510512' ,'17CTT1');
+
+insert into semester values('2020-1', 'Hoc ky 1 nam hoc 2020-2021', 2020, '2020-8-1', '2021-1-18', true);
+insert into semester values('2019-3', 'Hoc ky he nam hoc 2019-2020', 2019, '2020-6-1', '2020-8-27', false);
+
+select * from semester

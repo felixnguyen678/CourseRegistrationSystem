@@ -2,6 +2,10 @@ package POJO;
 
 import javax.persistence.*;
 import java.sql.Date;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.util.Locale;
 import java.util.Objects;
 import java.util.Set;
 
@@ -16,6 +20,33 @@ public class Semester {
     private Set<Course> courses;
     private CourseRegistrationSession registrationSession;
 
+    public Semester(){}
+    public Semester(Semester _semester){
+        this.semesterId = _semester.semesterId;
+        this.semesterName = _semester.semesterName;
+        this.year = _semester.year;
+        this.firstDay = _semester.firstDay;
+        this.lastDay = _semester.lastDay;
+        this.isCurrent = _semester.isCurrent;
+        this.courses = _semester.courses;
+        this.registrationSession = _semester.registrationSession;
+    }
+    public Semester(String _semesterId,
+                    String _semesterName,
+                    Integer _year,
+                    Date _firstDay,
+                    Date _lastday,
+                    Byte _isCurrent
+    ) throws ParseException {
+
+        semesterId = _semesterId;
+        semesterName = _semesterName;
+        year = _year;
+        firstDay = _firstDay;
+        lastDay = _lastday;
+        isCurrent = _isCurrent;
+    }
+
     @Id
     @Column(name = "semester_id", nullable = false, length = 10)
     public String getSemesterId() {
@@ -27,7 +58,7 @@ public class Semester {
     }
 
     @Basic
-    @Column(name = "semester_name", nullable = true, length = 10)
+    @Column(name = "semester_name", nullable = true, length = 50)
     public String getSemesterName() {
         return semesterName;
     }

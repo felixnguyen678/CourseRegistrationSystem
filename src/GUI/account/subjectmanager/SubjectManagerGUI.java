@@ -14,7 +14,7 @@ import java.util.List;
 
 public class SubjectManagerGUI extends JFrame {
 
-    public class SubjectManagerPane extends  JPanel{
+    private class SubjectManagerPane extends  JPanel{
         private JButton refreshButton;
         private JComboBox searchBox;
         private JButton searchButton;

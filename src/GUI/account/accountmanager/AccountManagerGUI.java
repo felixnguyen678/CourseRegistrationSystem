@@ -13,7 +13,7 @@ import java.util.List;
 
 public class AccountManagerGUI extends JFrame {
 
-    public class AccountManagerPane extends  JPanel{
+    private class AccountManagerPane extends  JPanel{
         private JButton refreshButton;
         private JTextField searchBox;
         private JButton searchButton;

@@ -5,6 +5,7 @@ import GUI.LoginGUI;
 import GUI.account.accountmanager.AccountManagerGUI;
 import GUI.account.clazzmanager.ClazzManagerGUI;
 import GUI.account.profilemanager.ProfileManagerGUI;
+import GUI.account.semestermanager.SemesterManagerGUI;
 import GUI.account.subjectmanager.SubjectManagerGUI;
 import POJO.Account;
 import utils.RunTimeUtil;
@@ -65,6 +66,12 @@ public class HomeGUI extends JFrame{
             @Override
             public void actionPerformed(ActionEvent e) {
                 SubjectManagerGUI subjectManagerGUI = new SubjectManagerGUI();
+            }
+        });
+        semesterButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                SemesterManagerGUI semesterManagerGUI = new SemesterManagerGUI();
             }
         });
     }

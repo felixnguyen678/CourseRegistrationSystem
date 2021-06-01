@@ -15,7 +15,7 @@ import java.util.List;
 
 public class ClazzManagerGUI extends JFrame {
 
-    public class ClazzManagerPane extends  JPanel{
+    private class ClazzManagerPane extends  JPanel{
         private JButton refreshButton;
         private JComboBox searchBox;
         private JButton searchButton;

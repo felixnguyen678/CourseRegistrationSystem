@@ -18,7 +18,7 @@ public class AddSubjectGUI extends  JFrame{
         private JButton submitButton;
         private JTextField subjectIdTextField;
 
-        public EditSubjectPane(){
+        private EditSubjectPane(){
             setTitle("Add Subject");
             setBorder(new EmptyBorder(60, 60, 60 ,60 ));
             setLayout(new GridBagLayout());
