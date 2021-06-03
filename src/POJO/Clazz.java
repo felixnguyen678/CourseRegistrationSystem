@@ -47,7 +47,10 @@ public class Clazz {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Clazz clazz = (Clazz) o;
-        return Objects.equals(classId, clazz.classId) && Objects.equals(className, clazz.className);
+        return Objects.equals(classId, clazz.classId);
+
+
+
     }
 
     @Override

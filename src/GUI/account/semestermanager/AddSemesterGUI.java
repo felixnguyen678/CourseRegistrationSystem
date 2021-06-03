@@ -17,7 +17,7 @@ import java.util.Locale;
 public class AddSemesterGUI extends JFrame {
     private class AddSemesterPane extends JPanel{
         private JTextField semesterIdTextField;
-        private JTextField semesterNameTextField;
+        private JComboBox semesterNameCB;
         private JComboBox yearComboBox;
         private DatePicker firstdayPicker;
         private DatePicker lastdayPicker;
@@ -41,8 +41,9 @@ public class AddSemesterGUI extends JFrame {
 
             add(new JLabel("Tên học kỳ:"));
 
-            semesterNameTextField = new JTextField("", 25);
-            add(semesterNameTextField, gbc);
+            String[] semesterNames = {"HK1", "HK2", "HK3"};
+            semesterNameCB = new JComboBox(semesterNames);
+            add(semesterNameCB, gbc);
 
             add(new JLabel("Năm học:"));
 
@@ -75,7 +76,7 @@ public class AddSemesterGUI extends JFrame {
                     try {
                         Semester semester = new Semester(
                                 semesterIdTextField.getText(),
-                                semesterNameTextField.getText(),
+                                semesterNameCB.getItemAt(semesterNameCB.getSelectedIndex()).toString(),
                                 Integer.parseInt(year),
                                 java.sql.Date.valueOf(firstdayPicker.getDate()),
                                 java.sql.Date.valueOf(lastdayPicker.getDate()),

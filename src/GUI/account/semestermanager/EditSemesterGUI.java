@@ -13,7 +13,7 @@ import java.text.ParseException;
 
 public class EditSemesterGUI extends JFrame {
     private class EditSemesterPane extends JPanel {
-        private JTextField semesterNameTextField;
+        private JComboBox semesterNameCB;
         private JComboBox yearComboBox;
         private DatePicker firstdayPicker;
         private DatePicker lastdayPicker;
@@ -32,8 +32,9 @@ public class EditSemesterGUI extends JFrame {
 
             add(new JLabel("Tên học kỳ:"));
 
-            semesterNameTextField = new JTextField("", 25);
-            add(semesterNameTextField, gbc);
+            String[] semesterNames = {"HK1", "HK2", "HK3"};
+            semesterNameCB = new JComboBox(semesterNames);
+            add(semesterNameCB, gbc);
 
             add(new JLabel("Năm học:"));
 
@@ -64,7 +65,7 @@ public class EditSemesterGUI extends JFrame {
                 public void actionPerformed(ActionEvent e) {
                     String year = yearComboBox.getItemAt(yearComboBox.getSelectedIndex()).toString().split("-")[0];
 
-                    semester.setSemesterName(semesterNameTextField.getText());
+                    semester.setSemesterName(semesterNameCB.getItemAt(semesterNameCB.getSelectedIndex()).toString());
                     semester.setYear(Integer.parseInt(year));
                     semester.setFirstDay(java.sql.Date.valueOf(firstdayPicker.getDate()));
                     semester.setLastDay(java.sql.Date.valueOf(lastdayPicker.getDate()));

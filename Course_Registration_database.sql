@@ -92,8 +92,8 @@ insert into subject values('LTNNSL', 'Lập trình ngôn ngữ Solidity', 1);
 insert into subject values('CTDLGT', 'Cơ sở dữ liệu & Giải thuật', 5);
 
 
-insert into semester values('2020-1', 'Hoc ky 1 nam hoc 2020-2021', 2020, '2020-8-1', '2021-1-18', true);
-insert into semester values('2019-3', 'Hoc ky he nam hoc 2019-2020', 2019, '2020-6-1', '2020-8-27', false);
+insert into semester values('2020-1', 'HK1', 2020, '2020-8-1', '2021-1-18', true);
+insert into semester values('2019-3', 'HK3', 2019, '2020-6-1', '2020-8-27', false);
 
 insert into student values('1710000', '12345', 'Sample Student', 1, '1999-12-5', '1710000@hcmus.edu.vn', '0862510512' ,'17CTT1');
 insert into student values('1610000', 'Gp#8iIYd+_', 'Jacob Bradley', 1 , '1988-12-22', 'dalvarado@walker-clements.com', '065-468-6133', '16CTT1' );

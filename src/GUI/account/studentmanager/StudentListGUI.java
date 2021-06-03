@@ -1,7 +1,12 @@
-package GUI.account.accountmanager;
+package GUI.account.studentmanager;
 
-import DAO.AccountDAO;
-import POJO.Account;
+import DAO.StudentDAO;
+import DAO.StudentDAO;
+
+import GUI.account.studentmanager.StudentSearchGUI;
+import POJO.Clazz;
+import POJO.Student;
+import POJO.Student;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
@@ -11,16 +16,15 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.List;
 
-public class AccountManagerGUI extends JFrame {
+public class StudentListGUI extends JFrame{
 
-    private class AccountManagerPane extends  JPanel{
+    private class StudentListPane extends JPanel {
         private JButton refreshButton;
         private JTextField searchBox;
         private JButton searchButton;
         private JButton addButton;
-        private List<Account> accounts;
-        AccountManagerPane(){
-            setTitle("Accounts");
+        private List<Student> students;
+        StudentListPane(Clazz clazz){
             setBorder(new EmptyBorder(60, 60, 60 ,60 ));
             setLayout(new GridBagLayout());
             GridBagConstraints gbc = new GridBagConstraints();
@@ -35,10 +39,10 @@ public class AccountManagerGUI extends JFrame {
                 @Override
                 public void actionPerformed(ActionEvent e) {
                     dispose();
-                    AccountManagerGUI newaccmnGUI = new AccountManagerGUI();
+                    StudentListGUI stl = new StudentListGUI(clazz);
                 }
             });
-            add(new JLabel("              Tìm tài khoản giáo vụ bằng username:"));
+            add(new JLabel("              Tìm tài khoản sinh viên bằng mã sinh viên:"));
             searchBox = new JTextField("", 25);
             add(searchBox);
             searchButton = new JButton("Search");
@@ -46,14 +50,14 @@ public class AccountManagerGUI extends JFrame {
             searchButton.addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
-                    Account acc = AccountDAO.getAccountByUsername(searchBox.getText());
-                    if(acc != null){
-                        AccountSearchGUI AccountSearchGUI = new AccountSearchGUI(acc);
+                    Student st = StudentDAO.getStudentById(searchBox.getText());
+                    if(st != null){
+                        SearchStudentGUI studentSearchGUI = new SearchStudentGUI(st);
                     }
                     else
                         JOptionPane.showMessageDialog(
                                 null,
-                                "Username không tồn tại",
+                                "Mã sinh viên không tồn tại",
                                 "Search failed",
                                 JOptionPane.WARNING_MESSAGE);
 
@@ -62,48 +66,55 @@ public class AccountManagerGUI extends JFrame {
 
             add(searchButton,gbc);
 
-            DefaultTableModel accountModel = new DefaultTableModel();
-            JTable accountTable = new JTable(accountModel);
-            accountTable.setPreferredScrollableViewportSize(new Dimension(500,80));
+            DefaultTableModel studentModel = new DefaultTableModel();
+            JTable studentTable = new JTable(studentModel);
+            studentTable.setPreferredScrollableViewportSize(new Dimension(500,80));
 
-            accountModel.addColumn("username");
-            accountModel.addColumn("Tên tài khoản");
-            accountModel.addColumn("e-mail");
-            accountModel.addColumn("Số điện thoại");
+            studentModel.addColumn("Mã sinh viên");
+            studentModel.addColumn("Tên sinh viên");
+            studentModel.addColumn("Giới tính");
+            studentModel.addColumn("Ngày sinh");
+            studentModel.addColumn("Lớp");
+            studentModel.addColumn("Email");
+            studentModel.addColumn("Số điện thoại");
 
-            accounts = AccountDAO.getAllAccounts();
-            if(accounts != null){
-                for(Account i: accounts){
-                    accountModel.addRow(new Object[]{
-                            i.getUsername(),
-                            i.getAccountName(),
+            students = StudentDAO.getAllStudentsByClass(clazz);
+            if(students != null){
+                for(Student i: students){
+                    studentModel.addRow(new Object[]{
+                            i.getStudentId(),
+                            i.getFullName(),
+                            i.getGender() == 1 ? "nam" : "nữ",
+                            i.getBirthday(),
+                            i.getClazz().getClassId(),
                             i.getEmail(),
                             i.getPhoneNumber()
                     });
 
                 }
             }
-            JScrollPane scrollPane = new JScrollPane(accountTable);
+            JScrollPane scrollPane = new JScrollPane(studentTable);
             scrollPane.setPreferredSize(new Dimension(400, 200));
             add(scrollPane, gbc);
-            addButton = new JButton("Thêm tài khoản giáo vụ");
+            addButton = new JButton("Thêm tài khoản sinh vien");
             add(addButton, gbc);
 
             addButton.addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
-                    AddAccountGUI addAccountGUI = new AddAccountGUI();
+                    AddStudentGUI addStudentGUI = new AddStudentGUI();
                 }
             });
         }
     }
-    public AccountManagerGUI(){
+
+    public StudentListGUI(Clazz clazz){
         SwingUtilities.invokeLater(new Runnable() {
             @Override
             public void run() {
-                setTitle("Account Manager");
+                setTitle("Student list");
                 setSize(600, 500);
-                add(new AccountManagerPane());
+                add(new StudentListPane(clazz));
                 pack();
                 setLocationRelativeTo(null);
                 setVisible(true);
