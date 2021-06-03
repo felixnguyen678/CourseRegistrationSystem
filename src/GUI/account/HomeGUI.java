@@ -4,6 +4,7 @@ import DAO.AccountDAO;
 import GUI.LoginGUI;
 import GUI.account.accountmanager.AccountManagerGUI;
 import GUI.account.clazzmanager.ClazzManagerGUI;
+import GUI.account.courseregistrationsessionmanager.SessionListGUI;
 import GUI.account.profilemanager.ProfileManagerGUI;
 import GUI.account.semestermanager.SemesterManagerGUI;
 import GUI.account.studentmanager.ClassSearchBoxGUI;
@@ -79,6 +80,12 @@ public class HomeGUI extends JFrame{
             @Override
             public void actionPerformed(ActionEvent e) {
                 ClassSearchBoxGUI classSearchBoxGUI = new ClassSearchBoxGUI();
+            }
+        });
+        courseRegistrationSessionButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                SessionListGUI sessionListGUI = new SessionListGUI();
             }
         });
     }

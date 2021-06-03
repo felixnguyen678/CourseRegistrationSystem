@@ -48,9 +48,6 @@ public class Clazz {
         if (o == null || getClass() != o.getClass()) return false;
         Clazz clazz = (Clazz) o;
         return Objects.equals(classId, clazz.classId);
-
-
-
     }
 
     @Override
@@ -67,5 +64,27 @@ public class Clazz {
         this.students = students;
     }
 
-
+    public int countStudent(){
+        int res = 0;
+        if(students == null) return 0;
+        return students.size();
+    }
+    public int countMale(){
+        int res = 0;
+        if(students == null) return 0;
+        for(Student s: students){
+            if(s.getGender() == 1)
+                res++;
+        }
+        return res;
+    }
+    public int countFemale(){
+        int res = 0;
+        if(students.size() == 0) return 0;
+        for(Student s: students){
+            if(s.getGender() == 0)
+                res++;
+        }
+        return res;
+    }
 }

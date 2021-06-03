@@ -137,4 +137,5 @@ public class Semester {
     public void setRegistrationSession(CourseRegistrationSession registrationSession) {
         this.registrationSession = registrationSession;
     }
+
 }

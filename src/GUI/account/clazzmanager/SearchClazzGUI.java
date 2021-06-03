@@ -14,10 +14,16 @@ public class SearchClazzGUI extends JFrame{
     private JPanel panel;
     private JLabel classIdLabel;
     private JLabel classNameLabel;
+    private JLabel amount;
+    private JLabel maleAmount;
+    private JLabel femaleAmount;
 
     public SearchClazzGUI(Clazz clazz) {
         classIdLabel.setText(clazz.getClassId());
         classNameLabel.setText(clazz.getClassName());
+        amount.setText(String.valueOf(clazz.countStudent()));
+        maleAmount.setText(String.valueOf(clazz.countMale()));
+        femaleAmount.setText(String.valueOf(clazz.countFemale()));
 
         add(panel);
         setSize(400, 200);

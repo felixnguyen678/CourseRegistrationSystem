@@ -24,7 +24,7 @@
             <column name="is_current" sql-type="tinyint(1)" not-null="true"/>
         </property>
         <one-to-one name="registrationSession" class="POJO.CourseRegistrationSession"/>
-        <set name="courses" inverse="true">
+        <set name="courses" inverse="true" lazy="false">
             <key>
                 <column name="semester_id" not-null="true"/>
             </key>

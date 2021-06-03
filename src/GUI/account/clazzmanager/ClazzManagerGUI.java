@@ -22,7 +22,6 @@ public class ClazzManagerGUI extends JFrame {
         private JButton addButton;
         private List<Clazz> clazzes;
         ClazzManagerPane(){
-            setTitle("Classes");
             setBorder(new EmptyBorder(60, 60, 60 ,60 ));
             setLayout(new GridBagLayout());
             GridBagConstraints gbc = new GridBagConstraints();
@@ -79,6 +78,9 @@ public class ClazzManagerGUI extends JFrame {
 
             accountModel.addColumn("Mã lớp");
             accountModel.addColumn("Tên lớp");
+            accountModel.addColumn("Số lượng sinh viên");
+            accountModel.addColumn("Số lượng nam");
+            accountModel.addColumn("Số lượng nữ");
 
 
             if(clazzes != null){
@@ -86,6 +88,9 @@ public class ClazzManagerGUI extends JFrame {
                     accountModel.addRow(new Object[]{
                             i.getClassId(),
                             i.getClassName(),
+                            i.countStudent(),
+                            i.countMale(),
+                            i.countFemale()
                     });
 
                 }

@@ -11,7 +11,7 @@
         <property name="className">
             <column name="class_name" sql-type="varchar(50)" length="50" not-null="true"/>
         </property>
-        <set name="students" inverse="true">
+        <set name="students" inverse="true" lazy="false">
             <key>
                 <column name="class_id" not-null="true"/>
             </key>

@@ -28,7 +28,7 @@
         </property>
 
 
-        <many-to-one name="clazz" class="POJO.Clazz">
+        <many-to-one name="clazz" class="POJO.Clazz" lazy="false">
             <column name="class_id" not-null="true"/>
         </many-to-one>
 

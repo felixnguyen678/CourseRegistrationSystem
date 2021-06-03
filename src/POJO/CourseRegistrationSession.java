@@ -12,6 +12,14 @@ public class CourseRegistrationSession {
     private Timestamp lastDay;
     private Semester semester;
 
+    public CourseRegistrationSession(String semesterId, Timestamp fistDay, Timestamp lastDay, Semester semester) {
+        this.semesterId = semesterId;
+        this.fistDay = fistDay;
+        this.lastDay = lastDay;
+        this.semester = semester;
+    }
+    public CourseRegistrationSession(){}
+
     @Id
     @Column(name = "semester_id", nullable = false, length = 10)
     public String getSemesterId() {
