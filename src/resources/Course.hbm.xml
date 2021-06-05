@@ -20,10 +20,10 @@
         <property name="maximumNumberOfSlot">
             <column name="maximum_number_of_slot" sql-type="int" not-null="true"/>
         </property>
-        <many-to-one name="subject" class="POJO.Subject">
+        <many-to-one name="subject" class="POJO.Subject" lazy="false">
             <column name="subject_id" not-null="true"/>
         </many-to-one>
-        <many-to-one name="semester" class="POJO.Semester">
+        <many-to-one name="semester" class="POJO.Semester" lazy="false">
             <column name="semester_id" not-null="true"/>
         </many-to-one>
 

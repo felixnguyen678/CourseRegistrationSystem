@@ -112,7 +112,7 @@ public class Semester {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Semester semester = (Semester) o;
-        return Objects.equals(semesterId, semester.semesterId) && Objects.equals(semesterName, semester.semesterName) && Objects.equals(year, semester.year) && Objects.equals(firstDay, semester.firstDay) && Objects.equals(lastDay, semester.lastDay) && Objects.equals(isCurrent, semester.isCurrent);
+        return Objects.equals(semesterId, semester.semesterId);
     }
 
     @Override
@@ -136,6 +136,15 @@ public class Semester {
 
     public void setRegistrationSession(CourseRegistrationSession registrationSession) {
         this.registrationSession = registrationSession;
+    }
+
+    public Course getCourseById(String id){
+        for(Course i: courses){
+            if(i.getCourseId().equals(id)){
+                return i;
+            }
+        }
+        return null;
     }
 
 }

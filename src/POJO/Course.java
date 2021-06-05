@@ -15,6 +15,18 @@ public class Course {
     private Semester semester;
     private Set<Registration> registrations;
 
+    public Course(){}
+
+    public Course(String courseId, String classroom, String weekday, Integer shift, Integer maximumNumberOfSlot, Subject subject, Semester semester) {
+        this.courseId = courseId;
+        this.classroom = classroom;
+        this.weekday = weekday;
+        this.shift = shift;
+        this.maximumNumberOfSlot = maximumNumberOfSlot;
+        this.subject = subject;
+        this.semester = semester;
+    }
+
     @Id
     @Column(name = "course_id", nullable = false, length = 10)
     public String getCourseId() {
@@ -70,7 +82,7 @@ public class Course {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Course course = (Course) o;
-        return Objects.equals(courseId, course.courseId) && Objects.equals(classroom, course.classroom) && Objects.equals(weekday, course.weekday) && Objects.equals(shift, course.shift) && Objects.equals(maximumNumberOfSlot, course.maximumNumberOfSlot);
+        return Objects.equals(courseId, course.courseId);
     }
 
     @Override
