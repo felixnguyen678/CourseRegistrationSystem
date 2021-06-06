@@ -7,6 +7,7 @@ import GUI.account.clazzmanager.ClazzManagerGUI;
 import GUI.account.coursemanager.CourseManagerGUI;
 import GUI.account.courseregistrationsessionmanager.SessionListGUI;
 import GUI.account.profilemanager.ProfileManagerGUI;
+import GUI.account.registrationmanager.CourseListGUI;
 import GUI.account.semestermanager.SemesterManagerGUI;
 import GUI.account.studentmanager.ClassSearchBoxGUI;
 import GUI.account.subjectmanager.SubjectManagerGUI;
@@ -93,6 +94,12 @@ public class HomeGUI extends JFrame{
             @Override
             public void actionPerformed(ActionEvent e) {
                 CourseManagerGUI courseManagerGUI = new CourseManagerGUI();
+            }
+        });
+        courseRegistrationResultButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                CourseListGUI courseListGUI = new CourseListGUI();
             }
         });
     }

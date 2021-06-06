@@ -6,7 +6,7 @@
 
     <class name="POJO.Course" table="course" schema="courseregistration">
         <id name="courseId">
-            <column name="course_id" sql-type="varchar(10)" length="10"/>
+            <column name="course_id" sql-type="varchar(20)" length="20"/>
         </id>
         <property name="teacherName">
             <column name="teacher_name" sql-type="varchar(50)" length="50" not-null="true"/>

@@ -59,7 +59,7 @@ public class HomeGUI extends JFrame{
                     Semester se = currentSemesters.get(0);
                     Timestamp ts = Timestamp.from(Instant.now());
 
-                    if(se.getLastDay().getTime() - ts.getTime() < 0) {
+                    if(se.getLastDay().getTime() - ts.getTime() > 0) {
                         RegistrateGUI registrateGUI = new RegistrateGUI(se);
                     }
                     else

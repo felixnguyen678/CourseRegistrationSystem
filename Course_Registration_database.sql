@@ -47,7 +47,7 @@ create table course_registration_session(
 );
 
 create table course(
-	course_id varchar(10) primary key,
+	course_id varchar(20) primary key,
     subject_id varchar(10) references subject(subject_id),
     semester_id varchar(10) references semester(semester_id),
     teacher_name varchar(50),
@@ -59,12 +59,11 @@ create table course(
 
 
 create table registration(
-    registration_id varchar(20) primary key ,
+    registration_id varchar(30) primary key ,
     student_id varchar(10) references student(student_id),
-    course_id varchar(10) references course(course_id),
+    course_id varchar(20) references course(course_id),
     registration_time datetime
 );
-truncate table registration;
 
 -- ADD DATA
 
@@ -599,4 +598,25 @@ insert into student values('1710496', 'y5Snnrog)Q', 'Zachary Gilmore', 1 , '1997
 insert into student values('1710497', '$kR+ZLan8A', 'Jordan Johnson', 0 , '1988-07-14', 'vanessa58@haynes-smith.com', '7692045160', '17CTT3' );
 insert into student values('1710498', '*hCnFA3d!2', 'Ms. Jennifer Grimes', 0 , '1996-05-03', 'karnold@taylor.com', '001-252-290-4129x8927', '17CTT3' );
 insert into student values('1710499', 'H2Wap9Ic$7', 'Jessica Wade', 0 , '1970-07-02', 'benjaminevans@gmail.com', '046-970-6367x00758', '17CTT3' );
+
+
+insert into semester values('2020-2', 'Hoc ky 2 nam 2020-2021', 2020, '2021-2-10','2021-7-10', 1);
+
+insert into course_registration_session values('2020-2', '2021-6-1','2021-7-30');
+
+insert into course values('BDT-2020-2', 'BDT', '2020-2', 'Nguyen Tran Minh Thu', 'F303', 'Monday', 1, 50);
+insert into course values('CTDLGT-2020-2', 'CTDLGT', '2020-2', 'Van Chi Nam', 'F303', 'Monday', 2, 50);
+insert into course values('DB-2020-2', 'DB', '2020-2', 'Nguyen Tran Minh Thu', 'F403', 'Monday', 2, 50);
+insert into course values('DTSC-2020-2', 'DTSC', '2020-2', 'Nguyen Tran Minh Thu', 'E404', 'Monday', 2, 50);
+insert into course values('LTNNC-2020-2', 'LTNNC', '2020-2', 'Ho Tuan Thanh', 'F403', 'Tuesday', 3, 80);
+insert into course values('MMT-2020-2', 'MMT', '2020-2', 'Vo Van Nguyen', 'F403', 'Tuesday', 1, 80);
+insert into course values('LTUDJ-2020-2', 'LTUDJ', '2020-2', 'Nguyen Van Khiet', 'F302', 'Wenesday', 3, 80);
+insert into course values('LTUDW-2020-2', 'LTUDW', '2020-2', 'Tran Thi Bich Hanh', 'E201', 'Thursday', 1, 100);
+insert into course values('OOP-2020-2', 'OOP', '2020-2', 'Ho Tuan Thanh', 'F403', 'Tuesday', 4, 80);
+insert into course values('NOSQL-2020-2', 'NOSQL', '2020-2', 'Luong Vi Minh', 'E201', 'Friday', 1, 40);
+
+insert into registration values('1710441-MMT-2020-2', '1710441', 'MMT-2020-2', '2020-6-6' );
+
+
+
 

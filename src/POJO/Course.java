@@ -30,7 +30,7 @@ public class Course {
     }
 
     @Id
-    @Column(name = "course_id", nullable = false, length = 10)
+    @Column(name = "course_id", nullable = false, length = 20)
     public String getCourseId() {
         return courseId;
     }

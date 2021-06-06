@@ -94,7 +94,7 @@ public class RegistrateGUI extends JFrame {
                         if(re.size()<=7){
                             if(check){
                                 if (RegistrationDAO.addRegistration(new Registration(
-                                        RunTimeUtil.getUserId() + course.getCourseId(),
+                                        RunTimeUtil.getUserId() + "-" + course.getCourseId(),
                                         StudentDAO.getStudentById(RunTimeUtil.getUserId()),
                                         course,
                                         Timestamp.from(Instant.now()

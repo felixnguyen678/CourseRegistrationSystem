@@ -24,7 +24,7 @@ public class Registration{
     }
 
     @Id
-    @Column(name = "registration_id", nullable = false, length = 20)
+    @Column(name = "registration_id", nullable = false, length = 30)
     public String getRegistrationId() {
         return registrationId;
     }

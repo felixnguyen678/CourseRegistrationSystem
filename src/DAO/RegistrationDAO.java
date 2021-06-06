@@ -44,6 +44,26 @@ public class RegistrationDAO {
         }
         return regis;
     }
+    public static List<Registration> getRegistrationsByCourse(Course course){
+        Session session = HibernateUtil.getSession();
+
+        List<Registration> registrations = new ArrayList<Registration>();
+        try{
+            final String hql = "select re from Registration re where re.course =:course";
+            Query query = session.createQuery(hql);
+            query.setParameter("course", course);
+
+            registrations = query.list();
+
+        }
+        catch (Throwable ex){
+            System.err.println(ex);
+        } finally {
+            session.close();
+        }
+        return registrations;
+    }
+
     public static boolean addRegistration(Registration registration){
         Session session = HibernateUtil.getSession();
         if(RegistrationDAO.getRegistrationById(registration.getRegistrationId()) != null)
@@ -82,6 +102,7 @@ public class RegistrationDAO {
         return true;
 
     }
+
     public static List<Registration> getRegistrationsByStudentAndSemester(Student st, Semester se){
         Session session = HibernateUtil.getSession();
 

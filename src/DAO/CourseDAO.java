@@ -1,12 +1,35 @@
 package DAO;
 
 import POJO.Course;
+import POJO.Course;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.hibernate.query.Query;
 import utils.HibernateUtil;
 
+import java.util.List;
+
 public class CourseDAO {
+    public static List<Course> getAllCourses() {
+        Session session = HibernateUtil.getSession();
+
+        List<Course> courses = null;
+        try{
+            final String hql = "select c from Course c";
+            Query query = session.createQuery(hql);
+
+            //get all students
+            courses = query.list();
+
+        }
+        catch (Throwable ex){
+            System.err.println(ex);
+        } finally {
+            session.close();
+        }
+        return courses;
+    }
     public static Course getCourseById(String id){
         Session session = HibernateUtil.getSession();
         Course course = null;
