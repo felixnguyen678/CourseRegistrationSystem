@@ -7,6 +7,7 @@ import java.util.Set;
 @Entity
 public class Course {
     private String courseId;
+    private String teacherName;
     private String classroom;
     private String weekday;
     private Integer shift;
@@ -17,8 +18,9 @@ public class Course {
 
     public Course(){}
 
-    public Course(String courseId, String classroom, String weekday, Integer shift, Integer maximumNumberOfSlot, Subject subject, Semester semester) {
+    public Course(String courseId,String teacherName, String classroom, String weekday, Integer shift, Integer maximumNumberOfSlot, Subject subject, Semester semester) {
         this.courseId = courseId;
+        this.teacherName = teacherName;
         this.classroom = classroom;
         this.weekday = weekday;
         this.shift = shift;
@@ -36,6 +38,12 @@ public class Course {
     public void setCourseId(String courseId) {
         this.courseId = courseId;
     }
+
+    @Basic
+    @Column(name = "teacher_name", nullable = true, length = 50)
+    public String getTeacherName(){ return teacherName;}
+
+    public void setTeacherName(String teacherName) { this.teacherName = teacherName;}
 
     @Basic
     @Column(name = "classroom", nullable = true, length = 10)

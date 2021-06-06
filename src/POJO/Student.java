@@ -17,6 +17,19 @@ public class Student {
     private Clazz clazz;
     private Set<Registration> registrations;
 
+    public Student(){}
+    public Student(Student student){
+        this.studentId = student.getStudentId();
+        this.password = student.getPassword();
+        fullName =student.getFullName();
+        gender = student.getGender();
+        birthday = student.getBirthday();
+        email = student.getEmail();
+        phoneNumber = student.getPhoneNumber();
+        clazz = student.getClazz();
+        registrations = student.getRegistrations();
+    }
+
     @Id
     @Column(name = "student_id", nullable = false, length = 10)
     public String getStudentId() {

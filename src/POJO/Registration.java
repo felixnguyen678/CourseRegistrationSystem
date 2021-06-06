@@ -14,6 +14,14 @@ public class Registration{
     private Student student;
     private String registrationId;
 
+    public Registration(){}
+
+    public Registration( String registrationId, Student student, Course course, Timestamp registrationTime) {
+        this.registrationTime = registrationTime;
+        this.course = course;
+        this.student = student;
+        this.registrationId = registrationId;
+    }
 
     @Id
     @Column(name = "registration_id", nullable = false, length = 20)
@@ -41,7 +49,7 @@ public class Registration{
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Registration that = (Registration) o;
-        return Objects.equals(registrationTime, that.registrationTime);
+        return Objects.equals(registrationId, that.registrationId);
     }
 
     @Override

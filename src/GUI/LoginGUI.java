@@ -2,8 +2,7 @@ package GUI;
 
 import DAO.AccountDAO;
 import DAO.StudentDAO;
-import GUI.account.HomeGUI;
-import GUI.student.StudentHomeGUI;
+import GUI.student.HomeGUI;
 import POJO.Account;
 
 import POJO.Student;
@@ -45,7 +44,7 @@ public class LoginGUI extends JFrame{
                         RunTimeUtil.setPassword(String.valueOf(passwordField.getPassword()));
                         RunTimeUtil.setUserId(textField.getText());
                         dispose();
-                        HomeGUI homeGUI = new HomeGUI();
+                        GUI.account.HomeGUI homeGUI = new GUI.account.HomeGUI();
 
                     }
                     else
@@ -65,7 +64,7 @@ public class LoginGUI extends JFrame{
                             RunTimeUtil.setPassword(String.valueOf(passwordField.getPassword()));
                             RunTimeUtil.setUserId(textField.getText());
                             dispose();
-                            StudentHomeGUI studentHomeGUI = new StudentHomeGUI(student);
+                            HomeGUI homeGUI = new HomeGUI(student);
                         }
                         else
                             JOptionPane.showMessageDialog(

@@ -8,13 +8,16 @@
         <id name="courseId">
             <column name="course_id" sql-type="varchar(10)" length="10"/>
         </id>
+        <property name="teacherName">
+            <column name="teacher_name" sql-type="varchar(50)" length="50" not-null="true"/>
+        </property>
         <property name="classroom">
             <column name="classroom" sql-type="varchar(10)" length="10" not-null="true"/>
         </property>
-        <property name="weekday">
+        <property name="weekday" lazy="false">
             <column name="weekday" sql-type="varchar(10)" length="10" not-null="true"/>
         </property>
-        <property name="shift">
+        <property name="shift" lazy="false">
             <column name="shift" sql-type="int" not-null="true"/>
         </property>
         <property name="maximumNumberOfSlot">
@@ -27,7 +30,7 @@
             <column name="semester_id" not-null="true"/>
         </many-to-one>
 
-        <set name="registrations" inverse="true">
+        <set name="registrations" inverse="true" lazy="false">
             <key>
                 <column name="course_id"/>
             </key>

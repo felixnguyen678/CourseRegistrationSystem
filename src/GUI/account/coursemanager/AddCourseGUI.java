@@ -20,6 +20,7 @@ import java.util.List;
 public class AddCourseGUI extends JFrame {
     private class AddCoursePane extends JPanel{
         private JTextField courseIdTf;
+        private JTextField teacherNameTf;
         private JComboBox subjectCb;
         private JTextField classroomTf;
         private JComboBox weekdayCb;
@@ -49,6 +50,10 @@ public class AddCourseGUI extends JFrame {
             }
             subjectCb = new JComboBox(subjectStrings.toArray());
             add(subjectCb, gbc);
+
+            add(new JLabel("Tên giáo viên:"));
+            teacherNameTf = new JTextField("", 25);
+            add(teacherNameTf, gbc);
 
             add(new JLabel("Phòng học:"));
             classroomTf = new JTextField("", 25);
@@ -80,6 +85,7 @@ public class AddCourseGUI extends JFrame {
                 public void actionPerformed(ActionEvent e) {
                     if(CourseDAO.addCourse(new Course(
                             courseIdTf.getText(),
+                            teacherNameTf.getText(),
                             classroomTf.getText(),
                             weekdayCb.getItemAt(weekdayCb.getSelectedIndex()).toString(),
                             shiftCb.getSelectedIndex() + 1,

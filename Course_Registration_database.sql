@@ -39,6 +39,7 @@ create table semester(
     last_day date,
     is_current boolean
 );
+
 create table course_registration_session(
 	semester_id varchar(10) primary key references semester(semester_id),
     fist_day datetime,
@@ -49,11 +50,13 @@ create table course(
 	course_id varchar(10) primary key,
     subject_id varchar(10) references subject(subject_id),
     semester_id varchar(10) references semester(semester_id),
+    teacher_name varchar(50),
     classroom	varchar(10),
     weekday varchar(10),
     shift integer,
     maximum_number_of_slot integer
 );
+
 
 create table registration(
     registration_id varchar(20) primary key ,
@@ -61,7 +64,7 @@ create table registration(
     course_id varchar(10) references course(course_id),
     registration_time datetime
 );
-
+truncate table registration;
 
 -- ADD DATA
 

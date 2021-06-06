@@ -32,7 +32,7 @@
             <column name="class_id" not-null="true"/>
         </many-to-one>
 
-        <set name="registrations" inverse="true">
+        <set name="registrations" inverse="true" lazy="false">
             <key>
                 <column name="student_id"/>
             </key>

@@ -26,7 +26,6 @@ public class CourseManagerGUI extends JFrame {
         private JButton addButton;
         private Semester currentSemester;
         CourseManagerPane(){
-            setTitle("Semesters");
             setBorder(new EmptyBorder(60, 60, 60 ,60 ));
             setLayout(new GridBagLayout());
             GridBagConstraints gbc = new GridBagConstraints();
@@ -40,7 +39,7 @@ public class CourseManagerGUI extends JFrame {
             else{
                 JOptionPane.showMessageDialog(
                         null,
-                        "Mã học phần không tồn tại",
+                        "không tồn tại",
                         "Search failed",
                         JOptionPane.WARNING_MESSAGE);
                 dispose();
@@ -90,13 +89,15 @@ public class CourseManagerGUI extends JFrame {
             add(new JLabel("Các học phần trong học kỳ hiện tại ("+currentSemester.getSemesterId()+"):"), gbc);
 
             DefaultTableModel courseModel = new DefaultTableModel();
-            JTable semesterTable = new JTable(courseModel);
-            semesterTable.setPreferredScrollableViewportSize(new Dimension(500,80));
+            JTable courseTable = new JTable(courseModel);
+            courseTable.setPreferredScrollableViewportSize(new Dimension(500,80));
 
             courseModel.addColumn("Mã học phần");
             courseModel.addColumn("Tên mã môn học");
             courseModel.addColumn("Tên môn học");
+            courseModel.addColumn("Số tín chỉ");
             courseModel.addColumn("Mã học kỳ");
+            courseModel.addColumn("Tên giáo viên");
             courseModel.addColumn("Phòng học");
             courseModel.addColumn("Ngày trong tuần");
             courseModel.addColumn("Ca");
@@ -110,7 +111,9 @@ public class CourseManagerGUI extends JFrame {
                             i.getCourseId(),
                             i.getSubject().getSubjectId(),
                             i.getSubject().getSubjectName(),
+                            i.getSubject().getNumberOfCredit(),
                             i.getSemester(),
+                            i.getTeacherName(),
                             i.getClassroom(),
                             i.getWeekday(),
                             i.getShift(),
@@ -119,8 +122,8 @@ public class CourseManagerGUI extends JFrame {
 
                 }
             }
-            JScrollPane scrollPane = new JScrollPane(semesterTable);
-            scrollPane.setPreferredSize(new Dimension(600, 200));
+            JScrollPane scrollPane = new JScrollPane(courseTable);
+            scrollPane.setPreferredSize(new Dimension(900, 200));
             add(scrollPane, gbc);
             addButton = new JButton("Thêm học phần vào học kỳ hiện tại");
             add(addButton, gbc);
@@ -140,7 +143,7 @@ public class CourseManagerGUI extends JFrame {
             @Override
             public void run() {
                 setTitle("Course Manager");
-                setSize(650, 500);
+                setSize(1000, 500);
                 add(new CourseManagerPane());
                 pack();
                 setLocationRelativeTo(null);

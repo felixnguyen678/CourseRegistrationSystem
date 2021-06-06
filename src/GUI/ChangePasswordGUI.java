@@ -1,7 +1,9 @@
 package GUI;
 
 import DAO.AccountDAO;
+import DAO.StudentDAO;
 import POJO.Account;
+import POJO.Student;
 import utils.RunTimeUtil;
 
 import javax.swing.*;
@@ -54,11 +56,19 @@ public class ChangePasswordGUI extends JFrame{
                             }
                         }
                         if(RunTimeUtil.getTypeOfUser().compareTo("student") == 0){
-                            /*
+                            Student currentStudent = StudentDAO.getStudentById(RunTimeUtil.getUserId());
+                            if(currentStudent.getPassword().compareTo(currentPassword) != 0){
+                                JOptionPane.showMessageDialog(null, "Current password is not right.","Change password warning", JOptionPane.WARNING_MESSAGE);
+                            }
+                            else{
+                                currentStudent.setPassword(newPassword);
+                                if(StudentDAO.updateStudent(currentStudent)){
+                                    JOptionPane.showMessageDialog(null, "Successfully Updated.");
+                                }
+                                else
+                                    JOptionPane.showMessageDialog(null, "Something wrong, please try again.","Change password warning", JOptionPane.WARNING_MESSAGE);
 
-                            student
-
-                             */
+                            }
                         }
                     }
                 }
